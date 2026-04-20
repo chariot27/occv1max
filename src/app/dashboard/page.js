@@ -55,6 +55,8 @@ export default function Dashboard() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          liAtCookie: liAtCookie.trim(),
+          vanityName: vanityName.trim(),
           extraContacts: {
             phone: extraPhone,
             github: extraGithub,
