@@ -3,7 +3,7 @@ import { ResumeTemplate } from '@/components/ResumeTemplate';
 import { fetchFullProfile } from '@/lib/linkedin';
 import { optimizeForATS } from '@/lib/ats-optimizer';
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 
 export async function POST(req) {
   try {
