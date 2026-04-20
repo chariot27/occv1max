@@ -7,9 +7,15 @@ const COOKIE_FILE = path.join(process.cwd(), '.linkedin-session.json');
 
 export async function POST(req) {
   try {
-    const session = await getServerSession(authOptions);
+    let session = null;
+    try {
+      session = await getServerSession(authOptions);
+    } catch (e) {
+      console.error("Session check failed in save-cookie:", e.message);
+    }
+
     if (!session) {
-      return new Response(JSON.stringify({ error: 'Not authenticated' }), { status: 401 });
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), { status: 401 });
     }
 
     const body = await req.json();
