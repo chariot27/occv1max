@@ -70,7 +70,13 @@ const faqs = [
 ];
 
 export default async function Home() {
-  const session = await getServerSession(authOptions);
+  let session = null;
+  try {
+    session = await getServerSession(authOptions);
+  } catch (e) {
+    console.error("Auth session fetch failed:", e.message);
+  }
+
   if (session) redirect("/dashboard");
 
   return (

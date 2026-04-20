@@ -40,7 +40,7 @@ export const authOptions = {
       return session;
     },
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET || "temp-secret-for-deployment",
 };
 
 const handler = NextAuth(authOptions);
